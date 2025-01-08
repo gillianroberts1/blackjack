@@ -43,4 +43,14 @@ describe("Player", () => {
     player.receiveCard({ rank: "9", value: 9, suit: "Hearts" });
     expect(player.showHand()).toBe('King of Clubs, 9 of Hearts')
   });
+
+  it("should identity if the player is bust", () => {
+    player.receiveCard({ rank: "King", value: 10 });
+    player.receiveCard({ rank: "9", value: 9 });
+    player.receiveCard({ rank: "5", value: 5 });
+
+    expect(player.isBust()).toBe(true)
+  });
+
+
 });
