@@ -1,20 +1,20 @@
 class Deck {
   constructor() {
     this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
-    this.labels = [
-      { label: "2", value: 2 },
-      { label: "3", value: 3 },
-      { label: "4", value: 4 },
-      { label: "5", value: 5 },
-      { label: "6", value: 6 },
-      { label: "7", value: 7 },
-      { label: "8", value: 8 },
-      { label: "9", value: 9 },
-      { label: "10", value: 10 },
-      { label: "Jack", value: 10 },
-      { label: "Queen", value: 10 },
-      { label: "King", value: 10 },
-      { label: "Ace", value: 11 },
+    this.ranks = [
+      { rank: "2", value: 2 },
+      { rank: "3", value: 3 },
+      { rank: "4", value: 4 },
+      { rank: "5", value: 5 },
+      { rank: "6", value: 6 },
+      { rank: "7", value: 7 },
+      { rank: "8", value: 8 },
+      { rank: "9", value: 9 },
+      { rank: "10", value: 10 },
+      { rank: "Jack", value: 10 },
+      { rank: "Queen", value: 10 },
+      { rank: "King", value: 10 },
+      { rank: "Ace", value: 11 },
     ];
     this.deck = [];
     this.buildDeck();
@@ -23,8 +23,8 @@ class Deck {
   buildDeck() {
     this.deck = [];
     for (const suit of this.suits) {
-      for (const { label, value } of this.labels) {
-        this.deck.push({ label, suit, value });
+      for (const { rank, value } of this.ranks) {
+        this.deck.push({ rank, suit, value });
       }
     }
   }
