@@ -1,27 +1,45 @@
 const Hand = require("./Hand");
+const Deck = require("./Deck");
+
+
 
 class Player {
   constructor(name) {
-    this.name = name;
+    this.name = name || "Player";
     this.hand = new Hand();
   }
 
-  receiveCard(card) {
-    this.hand.addCard(card);
+  dealOpeningHand(deck) {
+    const card1 = deck.draw();
+    const card2 = deck.draw();
+
+
+    this.hand.addCard(card1);
+    this.hand.addCard(card2);
+  }
+  
+
+  hit(deck) {
+    const newCard = deck.draw();
+    if (newCard && this.hasValidHand()) {
+      this.hand.addCard(newCard);
+    }
   }
 
-  getHandValue() {
+  stand() {
+    this.hand = this.hand;
+  }
+
+  hasValidHand() {
+    return this.getScore() <= 21;
+  }
+
+  getScore() {
     return this.hand.getHandValue();
   }
 
   isBust() {
-    return this.getHandValue() > 21
-  }
-
-  showHand() {
-    return this.hand.cards
-      .map((card) => `${card.rank} of ${card.suit}`)
-      .join(", ");
+    return this.getScore() > 21;
   }
 }
 
