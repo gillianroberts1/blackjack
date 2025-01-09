@@ -13,7 +13,7 @@ describe("Player", () => {
 
 
   beforeEach(() => {
-    player = new Player("Player");
+    player = new Player("Gillian");
     testDeck = new Deck();
   });
 

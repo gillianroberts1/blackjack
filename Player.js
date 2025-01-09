@@ -1,7 +1,4 @@
 const Hand = require("./Hand");
-const Deck = require("./Deck");
-
-
 
 class Player {
   constructor(name) {
@@ -13,11 +10,17 @@ class Player {
     const card1 = deck.draw();
     const card2 = deck.draw();
 
-
     this.hand.addCard(card1);
     this.hand.addCard(card2);
   }
-  
+
+  getScore() {
+    return this.hand.getHandValue();
+  }
+
+  hasValidHand() {
+    return this.getScore() <= 21;
+  }
 
   hit(deck) {
     const newCard = deck.draw();
@@ -28,14 +31,6 @@ class Player {
 
   stand() {
     this.hand = this.hand;
-  }
-
-  hasValidHand() {
-    return this.getScore() <= 21;
-  }
-
-  getScore() {
-    return this.hand.getHandValue();
   }
 
   isBust() {
