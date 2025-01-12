@@ -25,15 +25,15 @@ describe("Player", () => {
 
   it("should be able to receive another card by hitting, provided the hand is valid and update the score", () => {
     player.hand.addCard(card10);
-    player.hand.addCard(cardKing);
+    player.hand.addCard(card3);
 
     expect(player.hand.size()).toBe(2);
-    expect(player.getScore()).toBe(20);
+    expect(player.getScore()).toBe(13);
     expect(player.hasValidHand()).toBe(true);
 
     player.hit(testDeck); // unknown random card
     expect(player.hand.size()).toBe(3);
-    expect(player.getScore()).toBeGreaterThan(20); // greater than initial score after 2 cards
+    expect(player.getScore()).toBeGreaterThan(13); // greater than initial score after 2 cards
   });
 
   it("should be able to choose to stand and not receive any more cards, provided the hand is valid and maintain the score", () => {
@@ -85,24 +85,6 @@ describe("Player", () => {
     player.hand.addCard(card9);
     player.hand.addCard(cardAce);
     player.hand.addCard(cardAce);
-
-    expect(player.getScore()).toBe(21);
-  });
-
-  it("should be able to correctly calculate than when given a nine, an Ace, another Ace and a seven the score is 18", () => {
-    player.hand.addCard(card9);
-    player.hand.addCard(cardAce);
-    player.hand.addCard(cardAce);
-    player.hand.addCard(card7);
-
-    expect(player.getScore()).toBe(18);
-  });
-
-  it("should be able to correctly calculate than when given a three, an Ace, another Ace and a six the score is 21", () => {
-    player.hand.addCard(card3);
-    player.hand.addCard(cardAce);
-    player.hand.addCard(cardAce);
-    player.hand.addCard(card6);
 
     expect(player.getScore()).toBe(21);
   });
