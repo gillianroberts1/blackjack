@@ -11,7 +11,7 @@ class Dealer extends Player {
   // if 16 or less then dealer must hit
 
   dealerMove(deck) {
-    const score = this.getScore();
+    const score = this.getScore(); // get the dealers score ensuring aces are dealt with correctly
 
     //   Ensure that the dealer does not act if their hand is already "busted" (exceeds 21 points).
     if (this.isBust()) {
