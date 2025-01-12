@@ -50,15 +50,15 @@ class Deck {
   }
 }
 // initiliase new deck
-const myDeck = new Deck();
+// const myDeck = new Deck();
 
-// shuffle deck
-myDeck.shuffle()
+// // shuffle deck
+// myDeck.shuffle()
 
-const drawnCard = myDeck.draw()
-console.log('Drawn Card:', drawnCard);
+// const drawnCard = myDeck.draw()
+// console.log('Drawn Card:', drawnCard);
 
-console.log(myDeck.deck);
+// console.log(myDeck.deck);
 
 
 module.exports = Deck;

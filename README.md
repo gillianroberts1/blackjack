@@ -26,7 +26,7 @@ Ensuire you have Node.js installed on your machine.
    - git@github.com:gillianroberts1/blackjack.git
 
 2. Navigate to the project directory
-   - cd Blackjack_bbc_techtest
+   - cd blackjack
 
 3. Install dependancies
    - npm install

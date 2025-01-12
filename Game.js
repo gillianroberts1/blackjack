@@ -12,12 +12,13 @@ class Game {
   }
 
   async start() {
+    console.clear();
     console.log("Welcome to Blackjack!");
     this.dealOpeningHands();
 
     console.log("\nDealer's Hand:");
     console.log(
-      `  ${this.dealer.hand.cards[0].rank} ${this.dealer.hand.cards[0].suit}`
+      `  ${this.dealer.hand.cards[0].rank} of ${this.dealer.hand.cards[0].suit}`
     );
     console.log("  [Hidden Card]");
 
@@ -43,7 +44,7 @@ class Game {
 
   displayHand(playerOrDealer) {
     playerOrDealer.hand.cards.forEach((card) => {
-      console.log(`  ${card.rank} ${card.suit}`);
+      console.log(`  ${card.rank} of ${card.suit}`);
     });
     console.log(`Total: ${playerOrDealer.getScore()}`);
   }
