@@ -10,7 +10,8 @@ describe("Player", () => {
   const cardAce = { rank: "Ace", value: 11 };
   const cardQueen = { rank: "Queen", value: 10 };
   const card9 = { rank: "9", value: 9 };
-
+  const card7 = { rank: "7", value: 7 };
+  const card6 = { rank: "6", value: 6 };
 
   beforeEach(() => {
     player = new Player("Gillian");
@@ -88,6 +89,21 @@ describe("Player", () => {
     expect(player.getScore()).toBe(21);
   });
 
+  it("should be able to correctly calculate than when given a nine, an Ace, another Ace and a seven the score is 18", () => {
+    player.hand.addCard(card9);
+    player.hand.addCard(cardAce);
+    player.hand.addCard(cardAce);
+    player.hand.addCard(card7);
 
-  
+    expect(player.getScore()).toBe(18);
+  });
+
+  it("should be able to correctly calculate than when given a three, an Ace, another Ace and a six the score is 21", () => {
+    player.hand.addCard(card3);
+    player.hand.addCard(cardAce);
+    player.hand.addCard(cardAce);
+    player.hand.addCard(card6);
+
+    expect(player.getScore()).toBe(21);
+  });
 });
