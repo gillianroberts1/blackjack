@@ -23,10 +23,8 @@ Ensuire you have Node.js installed on your machine.
 ### Installation
 
 1. Clone this repository:
-   - git@github.com:gillianroberts1/blackjack.git
 
 2. Navigate to the project directory
-   - cd blackjack
 
 3. Install dependancies
    - npm install
@@ -84,12 +82,12 @@ Here's what the game might look like in the terminal:
 Welcome to Blackjack!
 
 Dealer's Hand:
-  Ace Clubs
+  Ace of Clubs
   [Hidden Card]
 
 Your Hand:
-  3 Clubs
-  Queen Hearts
+  3 of Clubs
+  Queen of Hearts
 Total: 13
 
 Do you want to (h)it or (s)tand? 
