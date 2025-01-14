@@ -2,10 +2,16 @@ const readline = require("readline");
 const Deck = require("./Deck");
 const Player = require("./Player");
 const Dealer = require("./Dealer");
+const { read } = require("fs");
 
 class Game {
   constructor() {
     // Initialises the game with a shuffled deck, player and dealer
+    this.resetGame();
+  }
+
+  // Resets player and dealer hands and shuffles the deck
+  resetGame() {
     this.deck = new Deck();
     this.player = new Player();
     this.dealer = new Dealer();
@@ -72,7 +78,7 @@ class Game {
 
     let action;
     do {
-      action = await promptPlayer();  // get player action
+      action = await promptPlayer(); // get player action
       if (action === "h") {
         //Player chooses to hit
         this.player.hit(this.deck);
@@ -85,7 +91,7 @@ class Game {
           break;
         }
       }
-    } while (action !== "s");  // continue until player stands
+    } while (action !== "s"); // continue until player stands
 
     rl.close();
   }
@@ -132,6 +138,22 @@ class Game {
     } else {
       console.log("\nIt's a tie! Dealer wins.");
     }
+
+    // Allow for another game
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question("\nDo you want to play again? (y/n) ", (answer) => {
+      if (answer.toLowerCase() === "y") {
+        this.resetGame(); // reset game before starting again
+        this.start(); // Start a new game
+      } else {
+        console.log("Thanks for playing Blackjack!");
+        rl.close();
+      }
+    });
   }
 }
 
