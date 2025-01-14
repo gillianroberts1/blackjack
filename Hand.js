@@ -13,7 +13,7 @@ class Hand {
     let total = 0;
     let aces = 0;
 
-    // calcultae the total vlue 
+    // calculate the total value
     for (const card of this.cards) {
       total += card.value;
       if (card.rank === "Ace") {
@@ -22,7 +22,7 @@ class Hand {
     }
 
     // Adjust for aces if the total is over 21
-    while(total > 21 && aces > 0) {
+    while (total > 21 && aces > 0) {
       total -= 10; //count ace as 1 instead of 11
       aces -= 1;
     }
@@ -31,6 +31,7 @@ class Hand {
   }
 
   size() {
+    // Returns the number of cards in the hand
     return this.cards.length;
   }
 }
