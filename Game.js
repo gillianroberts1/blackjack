@@ -5,6 +5,7 @@ const Dealer = require("./Dealer");
 
 class Game {
   constructor() {
+    // Initialises the game with a shuffled deck, player and dealer
     this.deck = new Deck();
     this.player = new Player();
     this.dealer = new Dealer();
@@ -12,37 +13,42 @@ class Game {
   }
 
   async start() {
+    // Starts game, dealing opening hands to player and dealer
     console.clear();
     console.log("Welcome to Blackjack!");
     this.dealOpeningHands();
 
+    // Displays dealers hand showing first card and hiding second
     console.log("\nDealer's Hand:");
     console.log(
       `  ${this.dealer.hand.cards[0].rank} of ${this.dealer.hand.cards[0].suit}`
     );
     console.log("  [Hidden Card]");
 
+    // Display players full hand
     console.log("\nYour Hand:");
     this.displayHand(this.player);
 
     // Player's Turn
     await this.playerTurn();
 
-    // Dealer's Turn (if player hasn't busted)
+    // Dealer's Turn if player is not bust)
     if (this.player.hasValidHand()) {
       this.dealerTurn();
     }
 
-    // Show Results
+    // Determine winner and show results
     this.determineWinner();
   }
 
   dealOpeningHands() {
+    // Deals 2 cards each to the player and dealer
     this.player.dealOpeningHand(this.deck);
     this.dealer.dealOpeningHand(this.deck);
   }
 
   displayHand(playerOrDealer) {
+    // Displays the cards and total score of the player or dealer
     playerOrDealer.hand.cards.forEach((card) => {
       console.log(`  ${card.rank} of ${card.suit}`);
     });
@@ -50,11 +56,13 @@ class Game {
   }
 
   async playerTurn() {
+    // Manages the players turn and prompts for hit or stand updating hand accordingly
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
     });
 
+    // Helper function to prompt player for action
     const promptPlayer = () =>
       new Promise((resolve) => {
         rl.question("\nDo you want to (h)it or (s)tand? ", (answer) => {
@@ -64,23 +72,26 @@ class Game {
 
     let action;
     do {
-      action = await promptPlayer();
+      action = await promptPlayer();  // get player action
       if (action === "h") {
+        //Player chooses to hit
         this.player.hit(this.deck);
         console.log("\nYour Hand:");
         this.displayHand(this.player);
 
+        // Check if player is bust
         if (!this.player.hasValidHand()) {
           console.log("\nYou busted!");
           break;
         }
       }
-    } while (action !== "s");
+    } while (action !== "s");  // continue until player stands
 
     rl.close();
   }
 
   dealerTurn() {
+    // Manages the dealers turn by hitting until the score is 17 or more
     console.log("\nDealer's Turn:");
     this.displayHand(this.dealer);
 
@@ -90,6 +101,7 @@ class Game {
       this.displayHand(this.dealer);
     }
 
+    // Determine if dealer can stand or is bust
     if (this.dealer.hasValidHand()) {
       console.log("Dealer stands.");
     } else {
@@ -98,6 +110,7 @@ class Game {
   }
 
   determineWinner() {
+    // Determines the winner based on the final scores of the player and dealer
     const playerScore = this.player.getScore();
     const dealerScore = this.dealer.getScore();
 
@@ -107,6 +120,7 @@ class Game {
     console.log("\nYour Hand:");
     this.displayHand(this.player);
 
+    // Compare scores to determine the winner
     if (!this.player.hasValidHand()) {
       console.log("\nYou busted! Dealer wins.");
     } else if (!this.dealer.hasValidHand()) {
