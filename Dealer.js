@@ -2,7 +2,7 @@ const Hand = require("./Hand");
 const Player = require("./Player");
 
 class Dealer extends Player {
-  constructor(hand) {
+  constructor() {
     super("Dealer"); // call the parent constructor with Dealer as the name
     this.hand = new Hand();
   }
