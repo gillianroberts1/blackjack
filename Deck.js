@@ -1,8 +1,6 @@
 class Deck {
   constructor() {
-    // Define the four suits in a deck of cards
     this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
-    // Define the ranks and values in a deck of cards
     this.ranks = [
       { rank: "2", value: 2 },
       { rank: "3", value: 3 },
@@ -21,6 +19,7 @@ class Deck {
 
     // Initialise an empty array to hold the cards in the deck
     this.deck = [];
+    // Call build deck function in constructor so new deck has 52 cards when initialised
     this.buildDeck();
   }
 
@@ -28,6 +27,7 @@ class Deck {
   buildDeck() {
     // start with an empty deck
     this.deck = [];
+    // nested loop to create a card of each rank and value for each suit
     for (const suit of this.suits) {
       for (const { rank, value } of this.ranks) {
         this.deck.push({ rank, suit, value });
@@ -35,12 +35,11 @@ class Deck {
     }
   }
   size() {
-    // Return the total number of cards currently in the deck
     return this.deck.length;
   }
 
   shuffle() {
-    // Shuffle deck using Fisher-Yates shiffle algorithm
+    // Shuffle deck using Fisher-Yates shuffle algorithm
     const totalCards = this.size();
     for (let currentIndex = totalCards - 1; currentIndex > 0; currentIndex--) {
       // Pick a random index
