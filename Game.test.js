@@ -15,11 +15,7 @@ describe("Game", () => {
   const card10 = { rank: "10", value: 10, suit: "Clubs" };
   const cardKing = { rank: "King", value: 10, suit: "Hearts" };
   const card3 = { rank: "3", value: 3, suit: "Diamonds" };
-  const cardAce = { rank: "Ace", value: 11, suit: "Spades" };
   const cardQueen = { rank: "Queen", value: 10, suit: "Clubs" };
-  const card9 = { rank: "9", value: 9, suit: "Hearts" };
-  const card7 = { rank: "7", value: 7 };
-  const card6 = { rank: "6", value: 6 };
 
   beforeEach(() => {
     game = new Game();
