@@ -146,6 +146,7 @@ class Game {
 
     rl.question("\nDo you want to play again? (y/n) ", (answer) => {
       if (answer.toLowerCase() === "y") {
+        rl.close();
         this.initialiseGame(); // reset game before starting again
         this.start(); // Start a new game
       } else {
