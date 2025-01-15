@@ -2,16 +2,15 @@ const readline = require("readline");
 const Deck = require("./Deck");
 const Player = require("./Player");
 const Dealer = require("./Dealer");
-const { read } = require("fs");
 
 class Game {
   constructor() {
     // Initialises the game with a shuffled deck, player and dealer
-    this.resetGame();
+    this.initialiseGame();
   }
 
   // Resets player and dealer hands and shuffles the deck
-  resetGame() {
+  initialiseGame() {
     this.deck = new Deck();
     this.player = new Player();
     this.dealer = new Dealer();
@@ -147,7 +146,7 @@ class Game {
 
     rl.question("\nDo you want to play again? (y/n) ", (answer) => {
       if (answer.toLowerCase() === "y") {
-        this.resetGame(); // reset game before starting again
+        this.initialiseGame(); // reset game before starting again
         this.start(); // Start a new game
       } else {
         console.log("Thanks for playing Blackjack!");
