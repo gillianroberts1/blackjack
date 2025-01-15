@@ -29,7 +29,7 @@ class Game {
     console.log(
       `  ${this.dealer.hand.cards[0].rank} of ${this.dealer.hand.cards[0].suit}`
     );
-    console.log("  [Hidden Card]");
+    console.log("  [Face Down Card]");
 
     // Display players full hand
     console.log("\nYour Hand:");
